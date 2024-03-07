@@ -41,7 +41,7 @@ public class Controleur {
         }
 
         if (modele.tentative < Modele.DIFFICULTE) {
-            vue.afficherMessage("Veuillez compléter la proposition avant de continuer.");
+            vue.afficherMessage("cliquez sur OK pour commencer ");
             return;
         }
 
