@@ -39,7 +39,19 @@ public class Modele {
             if (propositions[tentative] == null) {
                 nouvelleProposition();
             }
-            propositions[tentative].jetons[tentative] = couleur;
+            int indexJeton = 0;
+            // Trouver le premier jeton vide dans la proposition actuelle
+            while (indexJeton < DIFFICULTE && propositions[tentative].jetons[indexJeton] != null) {
+                indexJeton++;
+            }
+            // Vérifier si la proposition actuelle n'est pas encore pleine
+            if (indexJeton < DIFFICULTE) {
+                propositions[tentative].jetons[indexJeton] = couleur;
+            }
+            // Si la proposition actuelle est pleine, passer à la prochaine proposition
+            if (indexJeton == DIFFICULTE - 1) {
+                tentative++;
+            }
         }
     }
 
