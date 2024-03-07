@@ -15,7 +15,12 @@ public class Rangee {
     public String toString() {
     	String a_envoyer="";
     	for (Color g : jetons) {
-    		a_envoyer+=g.toString()+" ";
+    		if (g!=null) {
+    			a_envoyer+=g.toString()+" ";
+    		}
+    		else {
+    			a_envoyer+="null ";
+    		}
     	}
     	return a_envoyer;
     	
