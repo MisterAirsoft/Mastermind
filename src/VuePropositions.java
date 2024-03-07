@@ -1,32 +1,39 @@
-
 import javax.swing.*;
 import java.awt.*;
-
+ 
 public class VuePropositions extends JPanel {
     Modele modele;
-    JButton[][] boutons;
-
+    Color[][] couleur_jouer;
+     
+     
+    public void paint(Graphics g){
+         
+         
+        int size= 100/modele.DIFFICULTE;
+        g.drawRect(0, 0, 200, 500);
+        for (int y = 0; y < 10; y++) {
+        	if ((modele.propositions[y] != null)) {
+        		for (int x=0; x < modele.DIFFICULTE; x++) {
+        			g.setColor(modele.propositions[y].getColor(x));
+                    g.drawOval(10+x*size*2, 10+y*size*2, size, size);
+        			
+        		}
+        	}
+        
+        }
+        g.drawRect(0, 0, 200, 500);
+      }
+     
     public VuePropositions(Modele modele) {
+         
         this.modele = modele;
-        boutons = new JButton[10][Modele.DIFFICULTE];
-        setLayout(new GridLayout(10, Modele.DIFFICULTE));
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < Modele.DIFFICULTE; j++) {
-                boutons[i][j] = new JButton();
-                boutons[i][j].setPreferredSize(new Dimension(40, 40));
-                add(boutons[i][j]);
-            }
-        }
+         
+       
+ 
+         
     }
-
-    public void mettreAJour() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < Modele.DIFFICULTE; j++) {
-                if (modele.propositions[i] != null && modele.propositions[i].jetons[j] != null) {
-                	  boutons[i][j].setBackground(modele.propositions[i].jetons[j]);
-                }
-            }
-        }
+    public void  mettreAJour() {
+    	repaint();
     }
-}
+ 
+} 
